@@ -17,6 +17,7 @@ const toast = (message: string) => {
 
 
 const postData = async (url = '', data = {}) => {
+    console.log('postData', url, data)
     const response = await fetch(url, {
         method: 'POST',
         headers: {

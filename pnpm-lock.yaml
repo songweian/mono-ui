@@ -11,6 +11,9 @@ dependencies:
   ant-design-vue:
     specifier: ^4.1.2
     version: 4.1.2(vue@3.4.21)
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.4.3)(vue@3.4.21)

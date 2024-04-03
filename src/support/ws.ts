@@ -59,8 +59,8 @@ const createWebsocketClient = (stompClientUser: string) => {
     const rpcRequestMapping: any = {}
 
     const rpcCall = (command: string, rpcBody: any, timeout: number = 1000) => {
+        console.log('RPC Call: ', command, rpcBody, timeout)
         const correlationId = new Date().getTime().toString();
-
         const promise = new Promise((resolve) => {
             rpcRequestMapping[correlationId] = resolve;
         });

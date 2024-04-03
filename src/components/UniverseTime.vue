@@ -7,17 +7,8 @@ import { getSingletonWebsocketClient } from '@/support/ws'
 import { notification } from 'ant-design-vue'
 
 const user = ref<string>('')
-const selectedTimeZone = ref('')
-const selectedDate = ref<any>(null)
-const selectedTime = ref<any>(null)
-const timeRecords = ref<any>([])
-
 const earthTime = ref('')
 const alienTime = ref('')
-const addTimeRecord = () => {
-  // Add your logic to add a time record here
-}
-
 
 const toastAlarm = (msg: string) => {
   notification.warn({
@@ -27,28 +18,6 @@ const toastAlarm = (msg: string) => {
 };
 
 const websocketClient = ref<any>(null)
-
-const addAlarm = () => {
-  const time = `${selectedDate.value} ${selectedTime.value}`
-  console.log(`addAlarm`, selectedDate)
-  console.log(`addAlarm`, selectedTime)
-  const timeZone = selectedTimeZone.value
-  websocketClient.value.rpcCall("/rpc/timeAlarm/add", {
-    timeZone,
-    year: selectedDate.value,
-    month: selectedDate.value.getMonth() + 1,
-    day: selectedDate.value.getDate(),
-    hour: selectedTime.value.getHours(),
-    minute: selectedTime.value.getMinutes(),
-    second: selectedTime.value.getSeconds(),
-  })
-    .then((res: any) => {
-      console.log(`Rpc Received from ${user.value}: ${JSON.stringify(res)}`)
-    })
-    .catch((e: any) => {
-      console.error("Error", e)
-    })
-}
 
 onMounted(async () => {
   const route = useRoute();
@@ -68,11 +37,9 @@ onMounted(async () => {
   })
 });
 
-// ...existing code...
 </script>
 <template>
 
-  <!-- ...existing code... -->
 
   <div class="time-container">
     <div class="time-display">
@@ -81,29 +48,8 @@ onMounted(async () => {
         <a-descriptions-item label="外星时间">{{ alienTime }}</a-descriptions-item>
       </a-descriptions>
     </div>
-
-    <div class="time-selector">
-      <a-space>
-        <a-select v-model="selectedTimeZone" style="width: 200px" placeholder="选择时区">
-          <a-select-option value="UTC+0">地球UTC</a-select-option>
-          <a-select-option value="UTC+1">北京</a-select-option>
-          <a-select-option value="UTC+2">外星</a-select-option>
-        </a-select>
-
-        <a-date-picker v-model="selectedDate" type="date" placeholder="选择日期"></a-date-picker>
-        <a-time-picker v-model="selectedTime" placeholder="选择时间"></a-time-picker>
-        <a-button type="primary" @click="addTimeRecord">添加</a-button>
-      </a-space>
-    </div>
-
-    <div class="time-records">
-      <div v-for="record in timeRecords" :key="record.id">
-        <!-- Display your time record here -->
-      </div>
-    </div>
   </div>
 
-  <!-- ...existing code... -->
 </template>
 
 <style scoped>
