@@ -1,7 +1,7 @@
 FROM node:18.20 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm --registry=https://registry.npmmirror.com/ install
+RUN npm --registry=https://registry.npmmirror.com install
 COPY ./ .
 RUN npm run build
 
