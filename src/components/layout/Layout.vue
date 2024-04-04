@@ -1,5 +1,4 @@
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 <template>
   <a-layout>
     <a-layout-header class="a-layout-header">

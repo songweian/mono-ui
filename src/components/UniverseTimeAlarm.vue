@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getSingletonWebsocketClient } from '@/support/ws'
@@ -20,18 +19,18 @@ const toastAlarm = (msg: string) => {
   })
 }
 
-
 const addAlarm = () => {
   const timeZone = selectedTimeZone.value
-  websocketClient.value.rpcCall('/rpc/timeAlarm/add', {
-    timeZone,
-    year: selectedDate.value.year(),
-    month: selectedDate.value.month() + 1,
-    day: selectedDate.value.date(),
-    hour: selectedDate.value.hour(),
-    minute: selectedDate.value.minute(),
-    second: selectedDate.value.second()
-  })
+  websocketClient.value
+    .rpcCall('/rpc/timeAlarm/add', {
+      timeZone,
+      year: selectedDate.value.year(),
+      month: selectedDate.value.month() + 1,
+      day: selectedDate.value.date(),
+      hour: selectedDate.value.hour(),
+      minute: selectedDate.value.minute(),
+      second: selectedDate.value.second()
+    })
     .then((res: any) => {
       console.log(`Rpc Received from ${user.value}: ${JSON.stringify(res)}`)
     })
@@ -51,10 +50,8 @@ onMounted(async () => {
     toastAlarm(msg.body)
   })
 })
-
 </script>
 <template>
-
   <div class="time-container">
     <div class="time-selector">
       <a-space>
@@ -64,18 +61,19 @@ onMounted(async () => {
           <a-select-option :key="3" value="ALIEN">外星</a-select-option>
         </a-select>
 
-        <a-date-picker v-model:value="selectedDate"
-                       :show-time="{ format: 'HH:mm:ss' }"
-                       type="date"
-                       placeholder="选择时间"/>
+        <a-date-picker
+          v-model:value="selectedDate"
+          :show-time="{ format: 'HH:mm:ss' }"
+          type="date"
+          placeholder="选择时间"
+        />
 
         <a-button type="primary" @click="addAlarm">添加</a-button>
       </a-space>
     </div>
 
     <div class="time-records">
-      <div v-for="record in timeRecords" :key="record.id">
-      </div>
+      <div v-for="record in timeRecords" :key="record.id"></div>
     </div>
   </div>
 </template>

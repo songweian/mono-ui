@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps } from 'vue'
 
 // 定义组件接收的属性
 const props = defineProps({
   value: String,
   symbol: String,
   image: String
-});
+})
 </script>
 
 <template>
@@ -28,7 +28,6 @@ const props = defineProps({
   position: relative;
   border-radius: 10px;
   margin: 3px;
-
 }
 
 .card img {

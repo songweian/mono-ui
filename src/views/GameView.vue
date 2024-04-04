@@ -98,17 +98,22 @@ const playerCardContainerStyle: CSSProperties = {
     <div class="card-container" v-if="cards && cards.length > 0">
       <Card v-for="card in cards" :value="card.value" :symbol="card.symbol" />
     </div>
-    <div :class="['card-container',{ winner: winnerName === player.name }]" v-for="player in players">
-        <div>
-          <div v-if="winnerName == player.name">
-            <span>🏆获胜🏆</span>
-          </div>
-          <div style="display: flex;flex-direction: column">
-            <div>游戏玩家</div>
-            <div style="height: 100%;display: flex;align-items: center;justify-content: center">{{ player.name }}</div>
+    <div
+      :class="['card-container', { winner: winnerName === player.name }]"
+      v-for="player in players"
+    >
+      <div>
+        <div v-if="winnerName == player.name">
+          <span>🏆获胜🏆</span>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <div>游戏玩家</div>
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center">
+            {{ player.name }}
           </div>
         </div>
-        <Card v-for="card in player.cards" :value="card.value" :symbol="card.symbol" />
+      </div>
+      <Card v-for="card in player.cards" :value="card.value" :symbol="card.symbol" />
     </div>
   </div>
 </template>
@@ -124,12 +129,10 @@ const playerCardContainerStyle: CSSProperties = {
   padding: 2px;
   margin: 5px;
   background-color: peru;
-
 }
 
 .winner {
   border: 2px solid yellow;
   background: linear-gradient(to right, orange, yellow, green, blue, indigo, violet);
-
 }
 </style>

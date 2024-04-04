@@ -13,16 +13,16 @@ const alienTime = ref('')
 const toastAlarm = (msg: string) => {
   notification.warn({
     message: 'Time Alarm',
-    description: msg,
+    description: msg
   })
-};
+}
 
 const websocketClient = ref<any>(null)
 
 onMounted(async () => {
-  const route = useRoute();
-  const router = useRouter();
-  await router.isReady();
+  const route = useRoute()
+  const router = useRouter()
+  await router.isReady()
   user.value = <string>route.query.user
   websocketClient.value = await getSingletonWebsocketClient(user.value)
 
@@ -35,12 +35,9 @@ onMounted(async () => {
     earthTime.value = time.earthTime
     alienTime.value = time.alienTime
   })
-});
-
+})
 </script>
 <template>
-
-
   <div class="time-container">
     <div class="time-display">
       <a-descriptions title="时间" layout="vertical">
@@ -49,7 +46,6 @@ onMounted(async () => {
       </a-descriptions>
     </div>
   </div>
-
 </template>
 
 <style scoped>
