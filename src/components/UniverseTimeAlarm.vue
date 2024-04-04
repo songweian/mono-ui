@@ -7,10 +7,10 @@ import dayjs, { Dayjs } from 'dayjs'
 
 const user = ref<string>('')
 const selectedTimeZone = ref()
-const selectedDate = ref<Dayjs>(null)
+const selectedDate = ref<Dayjs>(new Dayjs())
 const timeRecords = ref<any>([])
 
-const websocketClient = ref<any>(null)
+const websocketClient = ref<any>({})
 
 const toastAlarm = (msg: string) => {
   notification.warn({

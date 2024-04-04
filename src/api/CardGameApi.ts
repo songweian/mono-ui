@@ -59,7 +59,7 @@ export const getWinner = async (id: string): Promise<GameInfo> => {
 }
 
 export interface Card {
-  value: number
+  value: string
   symbol: string
   color: string
   image: string
