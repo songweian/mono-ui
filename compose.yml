@@ -1,8 +1,9 @@
 services:
   mono-ui:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: registry-vpc.cn-beijing.aliyuncs.com/weian404/mono-ui
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
     ports:
       - "8081:80"
     deploy:
