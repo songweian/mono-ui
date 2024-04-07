@@ -1,6 +1,8 @@
 services:
   mono-ui:
     image: registry-vpc.cn-beijing.aliyuncs.com/weian404/mono-ui
+    networks:
+      - infra-network
 #    build:
 #      context: .
 #      dockerfile: Dockerfile
@@ -11,3 +13,6 @@ services:
         limits:
           cpus: '0.20'
           memory: 50M
+networks:
+  infra-network:
+    external: true
