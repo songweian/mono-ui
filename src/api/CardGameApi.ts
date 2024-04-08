@@ -17,7 +17,7 @@ const toast = (message: string) => {
 
 const postData = async (url = '', data = {}) => {
   console.log('postData', url, data)
-  const response = await fetch(url, {
+  const response = await fetch(`${import.meta.env.VITE_API_ENDPOINT}${url}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

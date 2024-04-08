@@ -3,7 +3,7 @@ import { Client } from '@stomp/stompjs'
 let websocketClient: any
 const createWebsocketClient = (stompClientUser: string) => {
   const stompClient = new Client({
-    brokerURL: `ws://localhost:8080/ws?user=${stompClientUser}`,
+    brokerURL: `${import.meta.env.VITE_WS_ENDPOINT}/ws?user=${stompClientUser}`,
     connectHeaders: {
       login: `${stompClientUser}`,
       passcode: 'my-passcode'
