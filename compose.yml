@@ -1,6 +1,8 @@
 services:
   mono-ui:
-    image: registry-vpc.cn-beijing.aliyuncs.com/weian404/mono-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
     networks:
       - infra-network
 #    build:
